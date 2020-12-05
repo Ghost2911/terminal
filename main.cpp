@@ -376,101 +376,99 @@ int loadTask(int menuPos)
 
             switch(pos)
             {
-            case 1:
-            {
-                cout << "Введите новое название товара: ";
-                cin >> name;
-                dataList.GetItem(findName)->record.name=name;
-                findName=name;
-                break;
-            }
-            case 2:
-            {
-                cout << "Введите новые единицы измерения товара: ";
-                cin >> units;
-                dataList.GetItem(findName)->record.units=units;
-                break;
-            }
-            case 3:
-            {
-                do
-                {
-                  cout << "Введите новую цену товара: ";
-                  cin >> price;
-                  if (cin.fail())
-                  {
-                      cin.clear();
-                      cin.ignore(32767,'\n');
-                      cout << "Вы ввели некорректные символы"<<endl;
-                      cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
-                  }
-                  else
-                  {
-                    if (price > 0)
-                        break;
-                    else
+                    case 1:
                     {
-                      cout << "Цена должна быть больше нуля"<<endl;
-                      cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
-                    }
-                  }
-                }while(true);
-
-                dataList.GetItem(findName)->record.price=price;
-                break;
-            }
-            case 4:
-            {
-                do
-                {
-                  cout << "Введите новое количество товара: ";
-                  cin >> count;
-                  if (cin.fail())
-                  {
-                      cin.clear();
-                      cin.ignore(32767,'\n');
-                      cout << "Вы ввели некорректные символы"<<endl;
-                      cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
-                  }
-                  else
-                  {
-                    if (count >= 0)
+                        cout << "Введите новое название товара: ";
+                        cin >> name;
+                        dataList.GetItem(findName)->record.name=name;
+                        findName=name;
                         break;
-                    else
-                    {
-                      cout << "Количество не может быть отрицательным"<<endl;
-                      cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
                     }
-                  }
+                    case 2:
+                    {
+                        cout << "Введите новые единицы измерения товара: ";
+                        cin >> units;
+                        dataList.GetItem(findName)->record.units=units;
+                        break;
+                    }
+                    case 3:
+                    {
+                        do
+                        {
+                          cout << "Введите новую цену товара: ";
+                          cin >> price;
+                          if (cin.fail())
+                          {
+                              cin.clear();
+                              cin.ignore(32767,'\n');
+                              cout << "Вы ввели некорректные символы"<<endl;
+                              cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
+                          }
+                          else
+                          {
+                            if (price > 0)
+                                break;
+                            else
+                            {
+                              cout << "Цена должна быть больше нуля"<<endl;
+                              cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
+                            }
+                          }
+                        }while(true);
 
-                }while(true);
+                        dataList.GetItem(findName)->record.price=price;
+                        break;
+                    }
+                    case 4:
+                    {
+                        do
+                        {
+                          cout << "Введите новое количество товара: ";
+                          cin >> count;
+                          if (cin.fail())
+                          {
+                              cin.clear();
+                              cin.ignore(32767,'\n');
+                              cout << "Вы ввели некорректные символы"<<endl;
+                              cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
+                          }
+                          else
+                          {
+                            if (count >= 0)
+                                break;
+                            else
+                            {
+                              cout << "Количество не может быть отрицательным"<<endl;
+                              cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
+                            }
+                          }
+                        }while(true);
 
-                dataList.GetItem(findName)->record.count=count;
-                break;
+                        dataList.GetItem(findName)->record.count=count;
+                        break;
+                    }
+                    case 0:
+                    {
+                        cont=false;
+                        break;
+                    }
+                    default:
+                    {
+                        cout << "Выбор производится в диапазоне от 1 до 4"<<endl;
+                        cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
+                        break;
+                    }
+                }
             }
-            case 0:
-            {
-                cont=false;
-                break;
-            }
-
-            default:
-            {
-                cout << "Выбор производится в диапазоне от 1 до 4"<<endl;
-                cout << "-------ПОВТОРИТЕ ВВОД-------"<<endl;
-                break;
-            }
-            }
+            break;
         }
-        break;
-    }
 
-    case 5:
-    {
-        cout << "Сохранение данных. Вывод базы в файл. Название файла:database.txt "<<endl;
-        cout << "Полная стоимость склада - "<<dataList.SaveDatabase()<<" руб.";
-        break;
-    }
+        case 5:
+        {
+            cout << "Сохранение данных. Вывод базы в файл. Название файла:database.txt "<<endl;
+            cout << "Полная стоимость склада - "<<dataList.SaveDatabase()<<" руб.";
+            break;
+        }
     }
     cout <<endl<< "# Для возврата в меню нажмите любую клавишу... "<<endl;
     getch();
@@ -480,7 +478,7 @@ int loadTask(int menuPos)
 int menuDraw(int menuPos)
 {
     clearscreen();
-    cout << "   АиСД - Индивидуальные задания (Шевцов Д.О)"<<endl<<endl;
+    cout <<endl<<endl;
     for (int i=0;i<5;i++)
     {
         if (menuPos==i)
